@@ -1,0 +1,56 @@
+{
+  "name": "bitcoin-cli",
+  "version": "1.0.0",
+  "description": "A CLI that convert bitcoin into a currency value.",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf bin",
+    "build": "npm run clear && ./node_modules/.bin/babel --out-dir bin src",
+    "build:watch": "",
+    "lint": "npx eslint src/*.js",
+    "prepush": "npm run lint && npm run test:coverage",
+    "test": "clear && mocha ./tests/**/*.spec.js --require @babel/register --reporter nyan",
+    "test:tdd": "npm run test -- --watch",
+    "test:coverage": "nyc npm test"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "btc": "bin/main.js"
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matheus-Alpe/bitcoin-cli.git"
+  },
+  "keywords": [
+    "bitcoin",
+    "cli",
+    "bitcoin-converter"
+  ],
+  "author": "Matheus Alves Pereira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Matheus-Alpe/bitcoin-cli/issues"
+  },
+  "homepage": "https://github.com/Matheus-Alpe/bitcoin-cli#readme",
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/register": "^7.13.8",
+    "babel-loader": "^8.2.2",
+    "chai": "^4.3.3",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^0.11.9",
+    "mocha": "^8.3.1",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2"
+  }
+}
